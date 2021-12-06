@@ -1,0 +1,56 @@
+{
+	"name": "Dev Dockerfile",
+	"dockerFile": "../Dockerfile",
+	"context": "..",
+	// "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-12",
+	"runArgs": [
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro",
+        "-v",
+        "${env:HOME}${env:USERPROFILE}/.kube:/root/.kube",
+        "-v",
+        "${env:HOME}${env:USERPROFILE}/.helm:/root/.helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.config/helm:/root/.config/helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.cache/helm:/root/.cache/helm",
+        "-v",
+        "${env:HOME}${env:USERPROFILE}/.docker:/root/.docker",
+		"-v", 
+		"/var/run/docker.sock:/var/run/docker.sock"
+	],
+
+	"postCreateCommand": "mkdir -p /root/.ssh && cp -r /root/.ssh-localhost/* /root/.ssh && chmod 700 /root/.ssh && chmod 600 /root/.ssh/*",
+	"settings": {
+		"files.eol": "\n",
+		"terminal.integrated.defaultProfile.linux": "zsh"
+	},
+	"extensions": [
+		"streetsidesoftware.code-spell-checker",
+		"yzhang.markdown-all-in-one",
+		"gua.rainbow-brackets",
+		"aaron-bond.better-comments",
+		"DavidAnson.vscode-markdownlint",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"esbenp.prettier-vscode",
+		"firefox-devtools.vscode-firefox-debug",
+		"golang.go",
+		"googlecloudtools.cloudcode",
+		"hashicorp.terraform",
+		"logicdiscovered.vsicons",
+		"ms-azure-devops.azure-pipelines",
+		"ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-aks-tools",
+		"ms-kubernetes-tools.vscode-kubernetes-tools",
+		"ms-vscode-remote.remote-containers",
+		"ms-vscode-remote.remote-wsl",
+		"ms-vscode.azure-account",
+		"ms-vsliveshare.vsliveshare",
+		"PaloAltoNetworksInc.prisma-cloud",
+		"redhat.vscode-yaml",
+		"ritwickdey.LiveServer",
+		"SonarSource.sonarlint-vscode",
+		"VisualStudioExptTeam.vscodeintellicode"
+	]
+}
