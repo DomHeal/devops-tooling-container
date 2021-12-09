@@ -64,10 +64,16 @@ RUN helm plugin install https://github.com/databus23/helm-diff
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/
 # Flux Cli
 RUN curl -s https://fluxcd.io/install.sh | bash
+# Argocd
+RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && chmod +x /usr/local/bin/argocd
+
 # Gcloud
 RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts
+RUN PATH="/root/google-cloud-sdk/bin:$PATH"
 # Kutomize
-RUN curl -s "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+RUN curl -s "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+RUN mv kustomize /usr/local/bin/
+
 # hadolint
 RUN wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint
 # cleanup
