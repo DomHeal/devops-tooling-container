@@ -3,28 +3,36 @@
 	"dockerFile": "../Dockerfile",
 	"context": "..",
 	// "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-12",
+	// "workspaceMount": "source=${localWorkspaceFolder}/sub-folder,target=/workspace,type=bind",
+        // "workspaceFolder": "/workspace"
 	"runArgs": [
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro",
-        "-v",
-        "${env:HOME}${env:USERPROFILE}/.kube:/root/.kube",
-        "-v",
-        "${env:HOME}${env:USERPROFILE}/.helm:/root/.helm",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.kube:/root/.kube",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.helm:/root/.helm",
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.config/helm:/root/.config/helm",
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.cache/helm:/root/.cache/helm",
-        "-v",
-        "${env:HOME}${env:USERPROFILE}/.docker:/root/.docker",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.docker:/root/.docker",
 		"-v", 
 		"/var/run/docker.sock:/var/run/docker.sock"
 	],
 
-	"postCreateCommand": "mkdir -p /root/.ssh && cp -r /root/.ssh-localhost/* /root/.ssh && chmod 700 /root/.ssh && chmod 600 /root/.ssh/*",
+	"postCreateCommand": "mkdir -p /root/.ssh && cp -r /root/.ssh-localhost/* /root/.ssh && chmod 700 /root/.ssh && chmod 600 /root/.ssh/* && update-ca-certificates && SNIPPET=\"export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history\" && echo $SNIPPET >> /root/.bashrc",
 	"settings": {
 		"files.eol": "\n",
 		"terminal.integrated.defaultProfile.linux": "zsh"
 	},
+	"mounts": [
+		"source=vscode-bashhistory,target=/commandhistory,type=volume"
+		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+    		// And/or for VS Code Insiders
+    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=vol
+	],
 	"extensions": [
 		"streetsidesoftware.code-spell-checker",
 		"yzhang.markdown-all-in-one",
