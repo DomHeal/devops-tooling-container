@@ -28,7 +28,7 @@ unzip \
 WORKDIR /tmp
 COPY .zshrc /root/.zshrc
 RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
-RUN apt-get update && apt-get upgrade && apt-get install -y ${PACKAGES}
+RUN apt-get update && apt-get -y upgrade && apt-get install -y ${PACKAGES}
 
 RUN apt-get install -y fonts-powerline && wget -O fzf.tar.gz https://github.com/junegunn/fzf/releases/download/0.28.0/fzf-0.28.0-linux_amd64.tar.gz && tar -xvf fzf.tar.gz && mv fzf /usr/local/bin && chmod +x /usr/local/bin/fzf
 
