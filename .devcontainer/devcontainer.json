@@ -31,7 +31,7 @@
 		"source=vscode-bashhistory,target=/commandhistory,type=volume"
 		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
     		// And/or for VS Code Insiders
-    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=vol
+    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
 	],
 	"extensions": [
 		"streetsidesoftware.code-spell-checker",
