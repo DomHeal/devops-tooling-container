@@ -81,7 +81,7 @@ jobs:
       - name: Scan image
         uses: anchore/scan-action@v3
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}
           fail-build: true
           severity-cutoff: critical
       
