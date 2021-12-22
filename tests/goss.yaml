@@ -1,0 +1,19 @@
+package:
+  curl:
+    installed: true
+  docker:
+    installed: true
+  git:
+    installed: true
+  packer:
+    installed: true
+  terraform:
+    installed: true
+  unzip:
+    installed: true
+  vault:
+    installed: true
+  vim:
+    installed: true
+  zsh:
+    installed: true

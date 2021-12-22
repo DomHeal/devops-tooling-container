@@ -2,7 +2,7 @@
 	"name": "Dev Dockerfile",
 	"dockerFile": "../Dockerfile",
 	"context": "..",
-	// "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-12",
+	// "image": "ghcr.io/domheal/devops-tooling-container:main",
 	// "workspaceMount": "source=${localWorkspaceFolder}/sub-folder,target=/workspace,type=bind",
         // "workspaceFolder": "/workspace"
 	"runArgs": [
@@ -25,13 +25,12 @@
 	"postCreateCommand": "mkdir -p /root/.ssh && cp -r /root/.ssh-localhost/* /root/.ssh && chmod 700 /root/.ssh && chmod 600 /root/.ssh/* && update-ca-certificates && SNIPPET=\"export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history\" && echo $SNIPPET >> /root/.bashrc",
 	"settings": {
 		"files.eol": "\n",
-		"terminal.integrated.defaultProfile.linux": "zsh"
+		"terminal.integrated.defaultProfile.linux": "zsh",
 	},
 	"mounts": [
-		"source=vscode-bashhistory,target=/commandhistory,type=volume"
+		"source=vscode-bashhistory,target=/commandhistory,type=volume",
 		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
-    		// And/or for VS Code Insiders
-    		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
+    	"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
 	],
 	"extensions": [
 		"streetsidesoftware.code-spell-checker",
