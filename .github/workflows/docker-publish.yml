@@ -80,7 +80,7 @@ jobs:
         id: scan
         uses: anchore/scan-action@v3
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+          image: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
           fail-build: false
           severity-cutoff: critical
           acs-report-enable: true
