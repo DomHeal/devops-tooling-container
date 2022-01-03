@@ -72,7 +72,14 @@ ZSH_THEME="simple"
 plugins=(
     git
     kubectl
+    kubectx
+    vault
     docker
+    terraform
+    npm
+    istioctl
+    helm
+    ansible
     gcloud
     zsh-autosuggestions
     zsh-syntax-highlighting 

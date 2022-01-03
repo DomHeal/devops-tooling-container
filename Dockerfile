@@ -26,6 +26,7 @@ docker.io \
 unzip \
 language-pack-en \
 fzf \
+jq \
 "
 WORKDIR /tmp
 
@@ -51,9 +52,6 @@ RUN curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/in
 RUN curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
     tar -xzf terraform-docs.tar.gz && chmod +x terraform-docs && mv terraform-docs /usr/local/bin/terraform-docs && \
     wget -O kubelinter.tar.gz https://github.com/stackrox/kube-linter/releases/download/0.2.5/kube-linter-linux.tar.gz && tar -xvf kubelinter.tar.gz && mv kube-linter /usr/local/bin/kube-linter && chmod +x /usr/local/bin/kube-linter
-
-# Hashicorp tools
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && apt-get update && apt-get install terraform packer vault
 
 # Azure
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops
@@ -83,6 +81,9 @@ RUN mv kustomize /usr/local/bin/
 
 # hadolint
 RUN wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint
+
+# yq
+RUN wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq && chmod +x /usr/bin/yq
 
 # Copy config files
 COPY .zshrc /root/.zshrc
