@@ -76,14 +76,13 @@ RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/relea
 RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts
 RUN PATH="/root/google-cloud-sdk/bin:$PATH"
 # Kutomize
-RUN curl -s "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
-RUN mv kustomize /usr/local/bin/
+RUN curl -s "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/
 
 # hadolint
 RUN wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint
 
 # yq
-RUN wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
 
 # Copy config files
 COPY .zshrc /root/.zshrc
