@@ -1,10 +1,10 @@
 {
 	"name": "Dev Dockerfile",
-	"dockerFile": "../Dockerfile",
-	"context": "..",
-	// "image": "ghcr.io/domheal/devops-tooling-container:main",
+	// "dockerFile": "../Dockerfile",
+	// "context": "..",
+	 "image": "ghcr.io/domheal/devops-tooling-container:main",
 	// "workspaceMount": "source=${localWorkspaceFolder}/sub-folder,target=/workspace,type=bind",
-        // "workspaceFolder": "/workspace"
+    // "workspaceFolder": "/workspace"
 	"runArgs": [
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro",
@@ -26,6 +26,7 @@
 	"settings": {
 		"files.eol": "\n",
 		"terminal.integrated.defaultProfile.linux": "zsh",
+		"terminal.integrated.windowsEnableConpty": false
 	},
 	"mounts": [
 		"source=vscode-bashhistory,target=/commandhistory,type=volume",

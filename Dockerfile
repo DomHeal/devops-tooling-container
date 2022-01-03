@@ -37,7 +37,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y terraform packer 
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-COPY .zshrc /root/.zshrc
 
 # Ansible and Tooling
 COPY requirements.txt /tmp/requirements.txt
@@ -84,6 +83,10 @@ RUN mv kustomize /usr/local/bin/
 
 # hadolint
 RUN wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint
+
+# Copy config files
+COPY .zshrc /root/.zshrc
+
 # Goss tests
 RUN curl -fsSL https://goss.rocks/install | sh
 COPY tests/goss.yaml ./
