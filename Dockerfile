@@ -75,7 +75,7 @@ RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/relea
 # Gcloud
 RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts
 ENV PATH $PATH:/root/google-cloud-sdk/bin
-RUN gcloud components install nomos
+RUN gcloud components install nomos && gcloud components install kpt
 
 RUN curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && mv stern /usr/local/bin/
 # Kutomize
