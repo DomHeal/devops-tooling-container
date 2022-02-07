@@ -79,7 +79,7 @@ RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 RUN gcloud components install nomos && gcloud components install kpt
 
-RUN curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && mv stern /usr/local/bin/
+RUN curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && mv stern /usr/local/bin/ && chmod +x /usr/local/bin/stern
 # Kutomize
 RUN curl -s "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/
 
