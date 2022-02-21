@@ -27,7 +27,7 @@ unzip \
 language-pack-en \
 fzf \
 jq \
-sshpass
+sshpass \
 "
 WORKDIR /tmp
 
