@@ -92,3 +92,4 @@ yamllint==1.26.3
 setuptools==57.4.0
 hvac
 pre-commit
+pyvmomi
