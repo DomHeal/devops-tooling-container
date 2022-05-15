@@ -69,7 +69,7 @@ pygments==2.9.0
 pynacl==1.4.0
 pyparsing==2.4.7
 python-dateutil==2.8.2
-python-slugify==5.0.2
+python-slugify==6.1.2
 pyyaml==5.4.1
 requests==2.26.0
 requestsexceptions==1.4.0
