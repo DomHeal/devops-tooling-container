@@ -31,8 +31,7 @@ sshpass \
 "
 WORKDIR /tmp
 
-RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
-RUN apt-get update && apt-get -y upgrade && apt-get install -y ${PACKAGES}
+RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES}
 # Hashicorp tools
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" 
 RUN apt-get update && apt-get -y upgrade && apt-get install -y terraform packer vault
@@ -76,7 +75,7 @@ RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/relea
 # Gcloud
 RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts
 ENV PATH $PATH:/root/google-cloud-sdk/bin
-RUN gcloud components install nomos && gcloud components install kpt
+RUN gcloud components install nomos kpt gsutil
 
 RUN curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && mv stern /usr/local/bin/ && chmod +x /usr/local/bin/stern
 # Kutomize
@@ -94,6 +93,4 @@ COPY .zshrc /root/.zshrc
 # Goss tests
 RUN curl -fsSL https://goss.rocks/install | sh
 COPY tests/goss.yaml ./
-RUN goss v && rm -rf goss.yaml
-# cleanup
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN goss v && rm -rf goss.yaml && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
