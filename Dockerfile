@@ -44,6 +44,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Pip packages
     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && \
     # Kubernetes tooling
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64 && chmod +x ./kind &&  mv ./kind /usr/local/bin/kind && \
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
     tar -zxvf krew-linux_amd64.tar.gz && chmod +x krew-linux_amd64 && mv krew-linux_amd64 /usr/local/bin/kubectl-krew && \
@@ -51,6 +52,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
     curl -sSL https://istio.io/downloadIstio | sh - && \
     # Terraform tools
+    curl -sSLo ./tfswitch.tar.gz https://github.com/cappyzawa/tfswitch/releases/download/v2.4.1/tfswitch_2.4.1_Linux_x86_64.tar.gz && tar -xzf tfswitch.tar.gz && chmod +x tfswitch && mv tfswitch /usr/local/bin/tfswitch && \
     curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
     curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
     tar -xzf terraform-docs.tar.gz && chmod +x terraform-docs && mv terraform-docs /usr/local/bin/terraform-docs && \
