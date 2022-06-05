@@ -34,6 +34,7 @@
     	"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
 	],
 	"extensions": [
+		"tsandall.opa",
 		"streetsidesoftware.code-spell-checker",
 		"yzhang.markdown-all-in-one",
 		"gua.rainbow-brackets",
