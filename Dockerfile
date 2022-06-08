@@ -51,6 +51,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
     curl -sSL https://istio.io/downloadIstio | sh - && \
+    curl -sSLo /usr/local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.0/switcher_linux_amd64 && chmod +x /usr/local/bin/switcher && \
     # Terraform tools
     curl -sSLo ./tfswitch.tar.gz https://github.com/cappyzawa/tfswitch/releases/download/v2.4.1/tfswitch_2.4.1_Linux_x86_64.tar.gz && tar -xzf tfswitch.tar.gz && chmod +x tfswitch && mv tfswitch /usr/local/bin/tfswitch && \
     curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
