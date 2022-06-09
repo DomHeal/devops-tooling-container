@@ -44,8 +44,8 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Pip packages
     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && \
     # Kubernetes tooling
-    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64 && chmod +x ./kind &&  mv ./kind /usr/local/bin/kind && \
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64 && chmod +x ./kind &&  mv ./kind /usr/local/bin/kind && \
+    curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
     tar -zxvf krew-linux_amd64.tar.gz && chmod +x krew-linux_amd64 && mv krew-linux_amd64 /usr/local/bin/kubectl-krew && \
     kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
@@ -57,7 +57,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
     tar -xzf terraform-docs.tar.gz && chmod +x terraform-docs && mv terraform-docs /usr/local/bin/terraform-docs && \
     # Helm and plugins
-    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
+    curl -fsSLO https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
     wget -q -O helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v1.5.0/helm-docs_1.5.0_Darwin_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
     wget -q -O helm-changelog.tar.gz https://github.com/mogensen/helm-changelog/releases/download/v0.0.1/helm-changelog_0.0.1_linux_amd64.tar.gz && tar -xvf helm-changelog.tar.gz && mv helm-changelog /usr/local/bin && chmod +x /usr/local/bin/helm-changelog && \
     helm plugin install https://github.com/databus23/helm-diff && \
@@ -71,6 +71,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Azure tooling
     curl -sSL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops && \
     # Utilities
+    curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo opa https://openpolicyagent.org/downloads/v0.41.0/opa_linux_amd64_static && chmod +x opa && mv opa /usr/local/bin/opa && \
     curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/v3.8.1/gator-v3.8.1-linux-amd64.tar.gz && tar -xvf gator-v3.8.1-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     wget -q -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint && \
