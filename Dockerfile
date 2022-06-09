@@ -51,14 +51,15 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
     curl -sSL https://istio.io/downloadIstio | sh - && \
+    curl -sSLo /usr/local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.0/switcher_linux_amd64 && chmod +x /usr/local/bin/switcher && \
     # Terraform tools
     curl -sSLo ./tfswitch.tar.gz https://github.com/cappyzawa/tfswitch/releases/download/v2.4.1/tfswitch_2.4.1_Linux_x86_64.tar.gz && tar -xzf tfswitch.tar.gz && chmod +x tfswitch && mv tfswitch /usr/local/bin/tfswitch && \
     curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
     curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
     tar -xzf terraform-docs.tar.gz && chmod +x terraform-docs && mv terraform-docs /usr/local/bin/terraform-docs && \
     # Helm and plugins
-    curl -fsSLO https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
-    wget -q -O helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v1.5.0/helm-docs_1.5.0_Darwin_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
+    wget -q -O helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v1.10.0/helm-docs_1.10.0_Linux_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
     wget -q -O helm-changelog.tar.gz https://github.com/mogensen/helm-changelog/releases/download/v0.0.1/helm-changelog_0.0.1_linux_amd64.tar.gz && tar -xvf helm-changelog.tar.gz && mv helm-changelog /usr/local/bin && chmod +x /usr/local/bin/helm-changelog && \
     helm plugin install https://github.com/databus23/helm-diff && \
     # Development Tools
