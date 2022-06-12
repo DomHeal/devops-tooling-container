@@ -79,7 +79,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v0.38.3/k6-v0.38.3-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-v0.38.3-linux-amd64/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && mv /tmp/.zshrc /root/.zshrc && \
-    mkdir ~/completions && istioctl collateral --zsh -o ~/completions && source ~/completions/_istioctl && \
+    mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
     # Run Tests
     goss v && \
     # Clean up
