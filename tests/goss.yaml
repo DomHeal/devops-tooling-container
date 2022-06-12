@@ -1,4 +1,6 @@
 package:
+  ansible:
+    installed: true
   curl:
     installed: true
   docker:
@@ -17,3 +19,88 @@ package:
     installed: true
   zsh:
     installed: true
+command:
+  argocd:
+    exec: argocd version --client
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0
+  helm:
+    exec: helm version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0
+  kubectl:
+    exec: kubectl version --client
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0
+  gcloud:
+    exec: gcloud version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0
+  kind:
+    exec: kind version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  az:
+    exec: az version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0  
+  tflint:
+    exec: tflint --version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0  
+  opa:
+    exec: opa version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  gator:
+    exec: gator --version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  yq:
+    exec: yq --version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  jq:
+    exec: jq --version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  dive:
+    exec: dive --version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  istioctl:
+    exec: istioctl version --remote=false
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 
+  k6:
+    exec: k6 version
+    exit-status: 0
+    stdout: []
+    stderr: []
+    timeout: 0 

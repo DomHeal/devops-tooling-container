@@ -42,13 +42,13 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Pip packages
     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && \
     # Kubernetes tooling
-    curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64 && chmod +x ./kind &&  mv ./kind /usr/local/bin/kind && \
+    curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin/kind && \
     curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
     tar -zxvf krew-linux_amd64.tar.gz && chmod +x krew-linux_amd64 && mv krew-linux_amd64 /usr/local/bin/kubectl-krew && \
     kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
-    curl -sSL https://istio.io/downloadIstio | sh - && \
+    curl -sSL https://istio.io/downloadIstio | ISTIO_VERSION=1.14.1 sh - && cp istio-1.14.1/bin/istioctl /usr/local/bin \
     curl -sSLo /usr/local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.0/switcher_linux_amd64 && chmod +x /usr/local/bin/switcher && \
     # Terraform tools
     curl -sSLo ./tfswitch.tar.gz https://github.com/cappyzawa/tfswitch/releases/download/v2.4.1/tfswitch_2.4.1_Linux_x86_64.tar.gz && tar -xzf tfswitch.tar.gz && chmod +x tfswitch && mv tfswitch /usr/local/bin/tfswitch && \
@@ -76,8 +76,10 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     wget -q -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint && \
     wget -q https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
+    curl -sSLo k6.tar.gz https://github.com/grafana/k6/releases/download/v0.38.3/k6-v0.38.3-linux-amd64.tar.gz && tar -xvf k6.tar.gz && mv k6-v0.38.3-linux-amd64/k6 /usr/local/bin/k6 && chmod +x /usr/local/bin/k6 && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && mv /tmp/.zshrc /root/.zshrc && \
+    mkdir ~/completions && istioctl collateral --zsh -o ~/completions && source ~/completions/_istioctl && \
     # Run Tests
     goss v && \
     # Clean up
