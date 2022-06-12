@@ -3,6 +3,7 @@ ENV ANSIBLE_FORCE_COLOR=1
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
 ENV PATH $PATH:/opt/google-cloud-sdk/bin
 ENV PATH "${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+ENV SHELL /bin/zsh
 ENV PACKAGES="\
 git \
 gcc \
@@ -32,11 +33,8 @@ jq \
 sshpass \
 "
 WORKDIR /tmp
-COPY requirements.txt /tmp/requirements.txt
 # Copy config files
-COPY .zshrc ./
-COPY tests/goss.yaml ./
-
+COPY .zshrc tests/goss.yaml requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
     curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
     add-apt-repository --yes --update ppa:ansible/ansible && apt-get update && \ 
