@@ -80,6 +80,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && mv /tmp/.zshrc /root/.zshrc && \
     mkdir ~/completions && istioctl collateral --zsh -o ~/completions && \
+    curl -sSLo operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/v1.21.0/operator-sdk_linux_amd64 && chmod +x operator-sdk && mv /usr/local/bin/operator-sdk && \
     # Run Tests
     goss v && \
     # Clean up
