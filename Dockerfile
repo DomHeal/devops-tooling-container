@@ -47,7 +47,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz" && \
     tar -zxvf krew-linux_amd64.tar.gz && chmod +x krew-linux_amd64 && mv krew-linux_amd64 /usr/local/bin/kubectl-krew && \
-    kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
+    kubectl krew install popeye neat stern slice sick-pods blame tree ctx ns && \
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
     curl -sSL https://istio.io/downloadIstio | ISTIO_VERSION=1.14.1 sh - && cp istio-1.14.1/bin/istioctl /usr/local/bin && \
     curl -sSLo /usr/local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.0/switcher_linux_amd64 && chmod +x /usr/local/bin/switcher && \
