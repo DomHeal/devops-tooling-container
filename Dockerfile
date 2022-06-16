@@ -2,7 +2,7 @@ FROM ubuntu
 ENV ANSIBLE_FORCE_COLOR=1
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/London"
 ENV PATH $PATH:/opt/google-cloud-sdk/bin
-ENV PATH "${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 ENV PACKAGES="\
 git \
@@ -31,6 +31,7 @@ unzip \
 fzf \
 jq \
 sshpass \
+less \
 "
 WORKDIR /tmp
 # Copy config files
