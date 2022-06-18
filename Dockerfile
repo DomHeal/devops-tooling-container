@@ -65,6 +65,8 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     wget -q -o go.tar.gz https://go.dev/dl/go1.17.3.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz && \
     curl -sSLo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/ && \
     curl -sSLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && chmod +x /usr/local/bin/argocd && \
+    curl -sSLo /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64 && chmod +x /usr/local/bin/kubectl-argo-rollouts && \
+
     # GCP tooling
     curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts && mv /root/google-cloud-sdk /opt/google-cloud-sdk && \
     gcloud components install nomos kpt gsutil && \
