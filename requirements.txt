@@ -25,3 +25,4 @@ setuptools
 hvac
 pre-commit
 pyvmomi
+checkov
