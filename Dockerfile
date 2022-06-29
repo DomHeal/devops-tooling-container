@@ -69,7 +69,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
 
     # GCP tooling
     curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts && mv /root/google-cloud-sdk /opt/google-cloud-sdk && \
-    gcloud components install nomos kpt gsutil && \
+    gcloud components install nomos kpt gsutil gke-gcloud-auth-plugin && \
     # Azure tooling
     curl -sSL https://aka.ms/InstallAzureCLIDeb | bash && az extension add --name azure-devops && \
     # Utilities
