@@ -57,7 +57,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -fsSLo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.5/terragrunt_linux_amd64 && \
     curl -sSlo vault.zip https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_linux_arm64.zip && unzip vault.zip && mv vault /usr/local/bin/vault && chmod +x /usr/local/bin/vault && \
     curl -sSlo packer.zip https://releases.hashicorp.com/packer/1.8.2/packer_1.8.2_linux_amd64.zip && unzip packer.zip && mv packer /usr/local/bin/packer && chmod +x /usr/local/bin/packer && \
-    curl -sSlo terraform.zip https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_windows_amd64.zip && unzip terraform.zip && mv terraform /usr/local/bin/terraform && chmod +x /usr/local/bin/terraform && \ 
+    curl -sSlo terraform.zip https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linux_amd64.zip && unzip terraform.zip && mv terraform /usr/local/bin/terraform && chmod +x /usr/local/bin/terraform && \ 
     curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash && \
     # Helm and plugins
     curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
