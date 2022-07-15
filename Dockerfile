@@ -54,11 +54,11 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
     curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
     tar -xzf terraform-docs.tar.gz && chmod +x terraform-docs && mv terraform-docs /usr/local/bin/terraform-docs && \
-    curl -fsSLo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.5/terragrunt_linux_amd64 && chmod +x /usr/local/bin/terragrunt \
     curl -sSlo vault.zip https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_linux_arm64.zip && unzip vault.zip && mv vault /usr/local/bin/vault && chmod +x /usr/local/bin/vault && \
     curl -sSlo packer.zip https://releases.hashicorp.com/packer/1.8.2/packer_1.8.2_linux_amd64.zip && unzip packer.zip && mv packer /usr/local/bin/packer && chmod +x /usr/local/bin/packer && \
     curl -sSlo terraform.zip https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linux_amd64.zip && unzip terraform.zip && mv terraform /usr/local/bin/terraform && chmod +x /usr/local/bin/terraform && \ 
     curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash && \
+    curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | bash && \
     # Helm and plugins
     curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && helm plugin install https://github.com/vbehar/helm3-unittest && \
     wget -q -O helm-docs.tar.gz https://github.com/norwoodj/helm-docs/releases/download/v1.10.0/helm-docs_1.10.0_Linux_x86_64.tar.gz && tar -xvf helm-docs.tar.gz && mv helm-docs /usr/local/bin && chmod +x /usr/local/bin/helm-docs && \
