@@ -32,6 +32,7 @@ fzf \
 jq \
 sshpass \
 less \
+golang \
 "
 WORKDIR /tmp
 # Copy config files
