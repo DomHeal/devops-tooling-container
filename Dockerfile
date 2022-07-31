@@ -44,7 +44,7 @@ WORKDIR /tmp
 # Copy config files
 COPY .zshrc tests/goss.yaml requirements.txt ./
 RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recommends -y ${PACKAGES} && \
-    add-apt-repository --yes --update ppa:ansible/ansible && apt-get update && \ 
+    add-apt-repository --yes --update ppa:ansible/ansible && \ 
     apt-get install -y ansible && \
     # Pip packages
     python3 -m pip install --no-cache-dir -r /tmp/requirements.txt && \
