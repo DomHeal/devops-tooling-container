@@ -55,7 +55,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     kubectl krew install neat stern slice sick-pods blame tree ctx ns && \
     curl -sSL "https:///raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && mv kustomize /usr/local/bin/ && \
     curl -sSL https://istio.io/downloadIstio | ISTIO_VERSION=1.14.1 sh - && cp istio-1.14.1/bin/istioctl /usr/local/bin && \
-    curl -sSLo /usr/local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.0/switcher_linux_amd64 && chmod +x /usr/local/bin/switcher && \
     # Terraform tools
     curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
     curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz && \
@@ -83,7 +82,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     # Utilities
     curl -sSLo dive.tar.gz https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz && tar -xvf dive.tar.gz && mv dive /usr/local/bin/dive && chmod +x /usr/local/bin/dive && \
     curl -sSLo opa https://openpolicyagent.org/downloads/v0.41.0/opa_linux_amd64_static && chmod +x opa && mv opa /usr/local/bin/opa && \
-    curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/v3.8.1/gator-v3.8.1-linux-amd64.tar.gz && tar -xvf gator-v3.8.1-linux-amd64.tar.gz && mv gat or /usr/local/bin && chmod +x /usr/local/bin/gator && \
+    curl -fsSLO https://github.com/open-policy-agent/gatekeeper/releases/download/v3.8.1/gator-v3.8.1-linux-amd64.tar.gz && tar -xvf gator-v3.8.1-linux-amd64.tar.gz && mv gator /usr/local/bin && chmod +x /usr/local/bin/gator && \
     wget -q -O hadolint https://github.com/hadolint/hadolint/releases/download/v2.8.0/hadolint-Linux-x86_64 && mv hadolint /usr/local/bin && chmod +x /usr/local/bin/hadolint && \
     wget -q https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq && \
     curl -fsSL https://goss.rocks/install | sh && \
