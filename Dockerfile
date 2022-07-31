@@ -70,7 +70,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     wget -q -O helm-changelog.tar.gz https://github.com/mogensen/helm-changelog/releases/download/v0.0.1/helm-changelog_0.0.1_linux_amd64.tar.gz && tar -xvf helm-changelog.tar.gz && mv helm-changelog /usr/local/bin && chmod +x /usr/local/bin/helm-changelog && \
     helm plugin install https://github.com/databus23/helm-diff && \
     # Development Tools
-    wget -q -o go.tar.gz https://go.dev/dl/go1.17.3.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz && \
     curl -sSLo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/ && \
     curl -sSLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && chmod +x /usr/local/bin/argocd && \
     curl -sSLo /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64 && chmod +x /usr/local/bin/kubectl-argo-rollouts && \
