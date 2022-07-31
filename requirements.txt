@@ -47,7 +47,7 @@ keyring==23.7.0
 launchpadlib==1.10.16
 lazr.restfulclient==0.14.4
 lazr.uri==1.0.6
-lxml==4.9.0
+lxml==4.9.1
 MarkupSafe==2.1.1
 molecule==4.0.1
 molecule-azure==0.5.0
