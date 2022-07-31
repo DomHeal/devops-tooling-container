@@ -6,6 +6,10 @@ ENV PATH "/root/.krew/bin:$PATH"
 ENV SHELL /bin/zsh
 # renovate: datasource=github-releases depName=mikefarah/yq
 ENV YQ_VERSION=v4.16.2
+# renovate: datasource=github-releases depName=hadolint/hadolint
+ENV HADOLINT_VERSION=v2.8.0
+# renovate: datasource=github-releases depName=wagoodman/dive
+ENV DIVE_VERSION=v0.10.0
 ENV PACKAGES="\
 git \
 gcc \
